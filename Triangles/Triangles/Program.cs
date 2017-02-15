@@ -32,7 +32,7 @@ namespace Triangles
             int vertex = Convert.ToInt32(Console.ReadLine());
             Point[] arrPoint = MakePoligon(vertex);
             Poligon poligon = new Poligon(vertex, arrPoint);
-            Print(arrPoint, vertex);
+            PrintPoligon(arrPoint, vertex);
             Console.WriteLine(poligon.Perimeter);
             Console.WriteLine(poligon.Area);
         }
@@ -83,7 +83,7 @@ namespace Triangles
             return arrPoint;
         } 
 
-        private static void Print(Point[] arrPoint, int vertix)
+        private static void PrintPoligon(Point[] arrPoint, int vertix)
         {
             for (int i = 0; i < vertix; i++)
             {
