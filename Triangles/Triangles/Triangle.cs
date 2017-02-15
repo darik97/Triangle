@@ -4,9 +4,9 @@ namespace Triangles
 {
     class Triangle
     {
-        private Point p1;
-        private Point p2;
-        private Point p3;
+        public readonly Point p1;
+        public readonly Point p2;
+        public readonly Point p3;
 
         double len1, len2, len3;
 
@@ -31,7 +31,7 @@ namespace Triangles
             }
         }
 
-        public double PerimeterTriangle
+        public double Perimeter
         {
             get
             {
@@ -39,16 +39,16 @@ namespace Triangles
             }
         }
 
-        public double AreaTriangle
+        public double Area
         {
             get
             {
-                double p = PerimeterTriangle / 2;
+                double p = Perimeter / 2;
                 return Math.Sqrt(p * (p - len1) * (p - len2) * (p - len3));
             }
         }
 
-        public bool RightTriangle
+        public bool isRight
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Triangles
             }
         }
 
-        public bool IsoscelesTriangle
+        public bool isIsosceles
         {
             get
             {

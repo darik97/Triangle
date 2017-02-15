@@ -4,57 +4,53 @@ namespace Triangles
 {
     class Poligon
     {
-        private int angle;
-        private Point[] arrPoint;
+        private int vertex;
+        public readonly Point[] arrPoint;
         private double[] length;
-        private Edge[] arrEdges;
 
-        public Poligon(int QuantityEdge)
+        public Poligon(int QuantityEdge, Point[] ArrayOfPoints)
         {
-            angle = QuantityEdge;
+            vertex = QuantityEdge;
+            arrPoint = ArrayOfPoints;           
 
-            Random Gen = new Random();
-            this.arrPoint = new Point[angle];
-            for (int i = 0; i < angle; i++)
-                arrPoint[i] = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
-
-            this.arrEdges = new Edge[angle];
-            for (int i = 0; i < angle - 1; i++)
+            Edge[] arrEdges = new Edge[vertex];
+            for (int i = 0; i < vertex - 1; i++)
                 arrEdges[i] = new Edge(arrPoint[i], arrPoint[i + 1]);
-            arrEdges[angle - 1] = new Edge(arrPoint[angle - 1], arrPoint[0]);
+            arrEdges[vertex - 1] = new Edge(arrPoint[vertex - 1], arrPoint[0]);
 
-            this.length = new double[angle];
-            for (int i = 0; i < angle; i++)
+            this.length = new double[vertex];
+            for (int i = 0; i < vertex; i++)
             {
                 length[i] = arrEdges[i].Length;
-                if (length[i] == 0 || angle < 3)
+                if (length[i] == 0 || vertex < 3)
                 {
                     throw new ArgumentException("Многоугольник не существует");
                 }
             }
-            Console.WriteLine(angle + "-угольник создан");
+            Console.WriteLine(vertex + "-угольник создан");
         }
 
-        public double PerimeterPoligon
+        public double Perimeter
         {
             get
             {
                 double perimeter = 0;
-                for (int i = 0; i < angle; i++)
+                for (int i = 0; i < vertex; i++)
                     perimeter = perimeter + length[i];
                 return perimeter;
             }
         }
 
-        public double AreaPoligon
+        public double Area
         {
             get
             {
                 double area = 0;
-                for (int i = 0; i < angle - 1; i++)
+                for (int i = 0; i < vertex - 1; i++)
                 {
-                    area = area + (arrPoint[i].x + arrPoint[i + 1].x) * (arrPoint[i].y + arrPoint[i + 1].y);
+                    area += (arrPoint[i].x * arrPoint[i + 1].y - arrPoint[i].y * arrPoint[i + 1].x);
                 }
+                area += (arrPoint[vertex - 1].x * arrPoint[0].y - arrPoint[vertex - 1].y * arrPoint[0].x);
                 return Math.Abs(area / 2);
             }
         }

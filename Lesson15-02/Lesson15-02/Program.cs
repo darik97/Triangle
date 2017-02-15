@@ -34,8 +34,8 @@ namespace Lesson15_02
         {
             if (y == 0)
             {
-              //  throw new Exception();
-              //  throw new ArgumentException("Division by zero");
+                throw new Exception();
+                throw new ArgumentException("Division by zero");
             }
             else
             {

@@ -16,12 +16,12 @@ namespace Triangles
 
             Triangle trianle = new Triangle(point1, point2, point3);
 
-            Console.WriteLine("Perimeter of triangle: " + trianle.PerimeterTriangle);
-            Console.WriteLine("Area of triangle: " + trianle.AreaTriangle);
+            Console.WriteLine("Perimeter of triangle: " + trianle.Perimeter);
+            Console.WriteLine("Area of triangle: " + trianle.Area);
 
-            if (trianle.RightTriangle)
+            if (trianle.isRight)
                 Console.WriteLine("Triangle is right");
-            if (trianle.IsoscelesTriangle)
+            if (trianle.isIsosceles)
                 Console.WriteLine("Triangle is isosceles");
 
             Console.WriteLine("Введите количество треугольников в массиве: ");
@@ -29,19 +29,19 @@ namespace Triangles
             TriangleArray(count);
 
             Console.WriteLine("Введите количество углов в многоугольнике: ");
-            int angle = Convert.ToInt32(Console.ReadLine());
-            Poligon poligon = new Poligon(angle);
-            Console.WriteLine(poligon.PerimeterPoligon);
-            Console.WriteLine(poligon.AreaPoligon);
+            int vertex = Convert.ToInt32(Console.ReadLine());
+            Point[] arrPoint = MakePoligon(vertex);
+            Poligon poligon = new Poligon(vertex, arrPoint);
+            Print(arrPoint, vertex);
+            Console.WriteLine(poligon.Perimeter);
+            Console.WriteLine(poligon.Area);
         }
 
         private static void TriangleArray(int count)
         {
             Triangle[] arrTriangle = new Triangle[count];
-            double perimeterAll = 0;
-            double areaAll = 0;
-            int quantityRight = 0;
-            int quantityIsosceles = 0;
+            double perimeterAll = 0, areaAll = 0;
+            int quantityRight = 0, quantityIsosceles = 0;
             for (int i = 0; i < count; i++)
             {
                 Random Gen = new Random();
@@ -52,14 +52,14 @@ namespace Triangles
 
                 arrTriangle[i] = new Triangle(p1, p2, p3);
 
-                if (arrTriangle[i].RightTriangle)
+                if (arrTriangle[i].isRight)
                 {
-                    perimeterAll = perimeterAll + arrTriangle[i].PerimeterTriangle;
+                    perimeterAll = perimeterAll + arrTriangle[i].Perimeter;
                     quantityRight++;
                 }
-                if (arrTriangle[i].IsoscelesTriangle)
+                if (arrTriangle[i].isIsosceles)
                 {
-                    areaAll = areaAll + arrTriangle[i].AreaTriangle;
+                    areaAll = areaAll + arrTriangle[i].Area;
                     quantityIsosceles++;
                 }
             }
@@ -72,6 +72,23 @@ namespace Triangles
                 Console.WriteLine("Average area " + areaAll / quantityIsosceles);
             else
                 Console.WriteLine("Average area " + 0);
+        }
+
+        private static Point[] MakePoligon(int numberOfVertices)
+        {
+            Point[] arrPoint = new Point[numberOfVertices];
+            Random Gen = new Random();
+            for (int i = 0; i < numberOfVertices; i++)
+                arrPoint[i] = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
+            return arrPoint;
+        } 
+
+        private static void Print(Point[] arrPoint, int vertix)
+        {
+            for (int i = 0; i < vertix; i++)
+            {
+                Console.WriteLine(i + " point: (" + arrPoint[i].x + ", " + arrPoint[i].y + ")");
+            }
         }
     }
 }
