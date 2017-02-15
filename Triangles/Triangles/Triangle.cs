@@ -27,8 +27,7 @@ namespace Triangles
             if (len1 >= len2 + len3 || len2 >= len1 + len3 || len3 >= len1 + len2
                 || len1 == 0 || len2 == 0 || len3 == 0)
             {
-                Console.WriteLine("Треугольник не существует");
-                Environment.Exit(0);
+                throw new ArgumentException("Треугольник не существует");
             }
         }
 

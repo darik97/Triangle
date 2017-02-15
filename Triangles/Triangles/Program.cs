@@ -31,6 +31,8 @@ namespace Triangles
             Console.WriteLine("Введите количество углов в многоугольнике: ");
             int angle = Convert.ToInt32(Console.ReadLine());
             Poligon poligon = new Poligon(angle);
+            Console.WriteLine(poligon.PerimeterPoligon);
+            Console.WriteLine(poligon.AreaPoligon);
         }
 
         private static void TriangleArray(int count)
