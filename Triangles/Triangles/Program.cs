@@ -46,9 +46,9 @@ namespace Triangles
             {
                 Random Gen = new Random();
 
-                Point p1 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
-                Point p2 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
-                Point p3 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
+                Point p1 = new Point(Gen.Next(-10, 10), Gen.Next(-10, 10));
+                Point p2 = new Point(Gen.Next(-10, 10), Gen.Next(-10, 10));
+                Point p3 = new Point(Gen.Next(-10, 10), Gen.Next(-10, 10));
 
                 arrTriangle[i] = new Triangle(p1, p2, p3);
 
@@ -77,9 +77,18 @@ namespace Triangles
         private static Point[] MakePoligon(int numberOfVertices)
         {
             Point[] arrPoint = new Point[numberOfVertices];
-            Random Gen = new Random();
+            //Random Gen = new Random();
+            //for (int i = 0; i < numberOfVertices; i++)
+            //    arrPoint[i] = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
+
             for (int i = 0; i < numberOfVertices; i++)
-                arrPoint[i] = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
+            {
+                int j = i + 1;
+                Console.WriteLine("Введите координаты " + j + "-ой точки: ");
+                int x = Convert.ToInt32(Console.ReadLine());
+                int y = Convert.ToInt32(Console.ReadLine());
+                arrPoint[i] = new Point(x, y);
+            }
             return arrPoint;
         } 
 
