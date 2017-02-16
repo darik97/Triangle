@@ -4,30 +4,30 @@ namespace Triangles
 {
     class Poligon
     {
-        private int vertex;
-        public readonly Point[] arrPoint;
+        private int size;
+        public readonly Point[] ArrPoint;
         private double[] length;
 
-        public Poligon(int QuantityEdge, Point[] ArrayOfPoints)
+        public Poligon(Point[] ArrayOfPoints)
         {
-            vertex = QuantityEdge;
-            arrPoint = ArrayOfPoints;           
+            size = ArrayOfPoints.Length;
+            ArrPoint = ArrayOfPoints;           
 
-            Edge[] arrEdges = new Edge[vertex];
-            for (int i = 0; i < vertex - 1; i++)
-                arrEdges[i] = new Edge(arrPoint[i], arrPoint[i + 1]);
-            arrEdges[vertex - 1] = new Edge(arrPoint[vertex - 1], arrPoint[0]);
+            Edge[] arrEdges = new Edge[size];
+            for (int i = 0; i < size - 1; i++)
+                arrEdges[i] = new Edge(ArrPoint[i], ArrPoint[i + 1]);
+            arrEdges[size - 1] = new Edge(ArrPoint[size - 1], ArrPoint[0]);
 
-            this.length = new double[vertex];
-            for (int i = 0; i < vertex; i++)
+            this.length = new double[size];
+            for (int i = 0; i < size; i++)
             {
                 length[i] = arrEdges[i].Length;
-                if (length[i] == 0 || vertex < 3)
+                if (length[i] == 0 || size < 3)
                 {
                     throw new ArgumentException("Многоугольник не существует");
                 }
             }
-            Console.WriteLine(vertex + "-угольник создан");
+            Console.WriteLine(size + "-угольник создан");
         }
 
         public double Perimeter
@@ -35,7 +35,7 @@ namespace Triangles
             get
             {
                 double perimeter = 0;
-                for (int i = 0; i < vertex; i++)
+                for (int i = 0; i < size; i++)
                     perimeter = perimeter + length[i];
                 return perimeter;
             }
@@ -46,11 +46,11 @@ namespace Triangles
             get
             {
                 double area = 0;
-                for (int i = 0; i < vertex - 1; i++)
+                for (int i = 0; i < size - 1; i++)
                 {
-                    area += (arrPoint[i].x * arrPoint[i + 1].y - arrPoint[i].y * arrPoint[i + 1].x);
+                    area += (ArrPoint[i].X * ArrPoint[i + 1].Y - ArrPoint[i].Y * ArrPoint[i + 1].X);
                 }
-                area += (arrPoint[vertex - 1].x * arrPoint[0].y - arrPoint[vertex - 1].y * arrPoint[0].x);
+                area += (ArrPoint[size - 1].X * ArrPoint[0].Y - ArrPoint[size - 1].Y * ArrPoint[0].X);
                 return Math.Abs(area / 2);
             }
         }

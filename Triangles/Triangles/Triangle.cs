@@ -4,21 +4,21 @@ namespace Triangles
 {
     class Triangle
     {
-        public readonly Point p1;
-        public readonly Point p2;
-        public readonly Point p3;
+        public readonly Point P1;
+        public readonly Point P2;
+        public readonly Point P3;
 
         double len1, len2, len3;
 
         public Triangle(Point point1, Point point2, Point point3)
         {
-            p1 = point1;
-            p2 = point2;
-            p3 = point3;
+            P1 = point1;
+            P2 = point2;
+            P3 = point3;
 
-            Edge e1 = new Edge(p1, p2);
-            Edge e2 = new Edge(p1, p3);
-            Edge e3 = new Edge(p2, p3);
+            Edge e1 = new Edge(P1, P2);
+            Edge e2 = new Edge(P1, P3);
+            Edge e3 = new Edge(P2, P3);
 
             len1 = e1.Length;
             len2 = e2.Length;
@@ -48,7 +48,7 @@ namespace Triangles
             }
         }
 
-        public bool isRight
+        public bool IsRight
         {
             get
             {
@@ -64,6 +64,16 @@ namespace Triangles
             {
                 return len1 == len2 || len1 == len3 || len2 == len3;
             }
+        }
+
+        public static bool operator ==(Triangle tr1, Triangle tr2)
+        {
+            return tr1.P1 == tr2.P1 && tr1.P2 == tr2.P2 && tr1.P3 == tr2.P3;
+        }
+
+        public static bool operator !=(Triangle tr1, Triangle tr2)
+        {
+            return tr1.P1 != tr2.P1 || tr1.P2 != tr2.P2 || tr1.P3 != tr2.P3;
         }
     }
 }
