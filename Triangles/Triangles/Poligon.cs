@@ -2,13 +2,13 @@
 
 namespace Triangles
 {
-    class Poligon
+    class Polygon
     {
         private int size;
         public readonly Point[] ArrPoint;
         private double[] length;
 
-        public Poligon(Point[] ArrayOfPoints)
+        public Polygon(Point[] ArrayOfPoints)
         {
             size = ArrayOfPoints.Length;
             ArrPoint = ArrayOfPoints;           

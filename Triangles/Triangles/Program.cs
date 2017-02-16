@@ -21,7 +21,7 @@ namespace Triangles
 
             if (trianle.IsRight)
                 Console.WriteLine("Треугольник прямоугольный");
-            if (trianle.isIsosceles)
+            if (trianle.IsIsosceles)
                 Console.WriteLine("Треугольник равнобедренный");
 
             Console.WriteLine("Введите количество треугольников в массиве: ");
@@ -31,7 +31,7 @@ namespace Triangles
             Console.WriteLine("Введите количество углов в многоугольнике: ");
             int size = Convert.ToInt32(Console.ReadLine());
             Point[] arrPoint = MakeArrayOfPoints(size);
-            Poligon poligon = new Poligon(arrPoint);
+            Polygon poligon = new Polygon(arrPoint);
             PrintPoligon(arrPoint);
             Console.WriteLine(poligon.Perimeter);
             Console.WriteLine(poligon.Area);
@@ -61,7 +61,7 @@ namespace Triangles
                     perimeterAll = perimeterAll + arrTriangle[i].Perimeter;
                     quantityRight++;
                 }
-                if (arrTriangle[i].isIsosceles)
+                if (arrTriangle[i].IsIsosceles)
                 {
                     areaAll = areaAll + arrTriangle[i].Area;
                     quantityIsosceles++;

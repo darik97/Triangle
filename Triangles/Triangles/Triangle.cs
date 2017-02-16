@@ -58,7 +58,7 @@ namespace Triangles
             }
         }
 
-        public bool isIsosceles
+        public bool IsIsosceles
         {
             get
             {
