@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Triangles
 {
@@ -14,19 +10,19 @@ namespace Triangles
             Point point2 = new Point(4, 0);
             Point point3 = new Point(0, 0);
 
-            Triangle trianle = new Triangle(point1, point2, point3);
+            Triangle triangle = new Triangle(point1, point2, point3);
 
-            Console.WriteLine("Периметр треугольника: " + trianle.Perimeter);
-            Console.WriteLine("Площадь треугольника: " + trianle.Area);
+            Console.WriteLine("Периметр треугольника: " + triangle.Perimeter);
+            Console.WriteLine("Площадь треугольника: " + triangle.Area);
 
-            if (trianle.IsRight)
+            if (triangle.IsRight)
                 Console.WriteLine("Треугольник прямоугольный");
-            if (trianle.IsIsosceles)
+            if (triangle.IsIsosceles)
                 Console.WriteLine("Треугольник равнобедренный");
 
             Console.WriteLine("Введите количество треугольников в массиве: ");
-            int count = Convert.ToInt32(Console.ReadLine());
-            TriangleArray(count);
+            int amount = Convert.ToInt32(Console.ReadLine());
+            TriangleArray(amount);
 
             Console.WriteLine("Введите количество углов в многоугольнике: ");
             int size = Convert.ToInt32(Console.ReadLine());
@@ -37,22 +33,22 @@ namespace Triangles
             Console.WriteLine(poligon.Area);
         }
 
-        private static void TriangleArray(int count)
+        private static void TriangleArray(int amount)
         {
-            Triangle[] arrTriangle = new Triangle[count];
+            Triangle[] arrTriangle = new Triangle[amount];
             double perimeterAll = 0, areaAll = 0;
             int quantityRight = 0, quantityIsosceles = 0;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < amount; i++)
             {
                 Random Gen = new Random();
 
-                //Point p1 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
-                //Point p2 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
-                //Point p3 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
+                Point p1 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
+                Point p2 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
+                Point p3 = new Point(Gen.Next(0, 5), Gen.Next(0, 5));
 
-                Point p1 = new Point(0, 5);
-                Point p2 = new Point(5, 5);
-                Point p3 = new Point(0, 0);
+                //Point p1 = new Point(0, 5);
+                //Point p2 = new Point(5, 5);
+                //Point p3 = new Point(0, 0);
 
                 arrTriangle[i] = new Triangle(p1, p2, p3);
 
@@ -73,18 +69,18 @@ namespace Triangles
             else
                 Console.WriteLine("Средний периметр прямоугольных треугольников " + 0);
             if (quantityIsosceles != 0)
-                Console.WriteLine("Средний периметр прямоугольных треугольников " + areaAll / quantityIsosceles);
+                Console.WriteLine("Средний периметр равнобедренных треугольников " + areaAll / quantityIsosceles);
             else
-                Console.WriteLine("Средний периметр прямоугольных треугольников " + 0);
+                Console.WriteLine("Средний периметр равнобедренных треугольников " + 0);
 
-            if (arrTriangle[0] == arrTriangle[1])
-            {
-                Console.WriteLine("Треугольники равны");
-            }
-            else
-            {
-                Console.WriteLine("Треугоьники не равны");
-            }
+            //if (arrTriangle[0] == arrTriangle[1])
+            //{
+            //    Console.WriteLine("Треугольники равны");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Треугольники не равны");
+            //}
         }
 
         private static Point[] MakeArrayOfPoints(int size)
